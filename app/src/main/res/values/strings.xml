@@ -5,4 +5,5 @@
     <string name="lender_login">Lender Login</string>
     <string name="victim_login">Victim Login</string>
     <string name="create_account">Create an Account</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
