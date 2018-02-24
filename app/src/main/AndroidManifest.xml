@@ -23,7 +23,13 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateAccountActivity"></activity>
+        <activity android:name=".CreateAccountActivity" />
+        <activity
+            android:name=".VictimControlActivity"
+            android:label="@string/title_activity_victim_control" />
+        <activity
+            android:name=".LenderControlActivity"
+            android:label="@string/title_activity_lender_control"></activity>
     </application>
 
 </manifest>
