@@ -1,5 +1,6 @@
 package edu.lonestar.droplet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,21 +23,24 @@ public class MainActivity extends AppCompatActivity {
         lenderLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
+                MainActivity.this.startActivity(myIntent);
             }
         });
 
         victimLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
+                MainActivity.this.startActivity(myIntent);
             }
         });
 
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent myIntent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                MainActivity.this.startActivity(myIntent);
             }
         });
     }
