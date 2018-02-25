@@ -107,13 +107,13 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> implements Vie
                 break;
             case 4:
                 viewHolder.statusView.setText("accepted");
-                viewHolder.statusView.setTextColor(Color.parseColor("#A5BED1"));
-                viewHolder.amountView.setTextColor(Color.parseColor("#A5BED1"));
+                viewHolder.statusView.setTextColor(Color.parseColor("#75C780"));
+                viewHolder.amountView.setTextColor(Color.parseColor("#75C780"));
                 break;
             case 5:
                 viewHolder.statusView.setText("paid");
-                viewHolder.statusView.setTextColor(Color.parseColor("#A5BED1"));
-                viewHolder.amountView.setTextColor(Color.parseColor("#A5BED1"));
+                viewHolder.statusView.setTextColor(Color.parseColor("#D67B70"));
+                viewHolder.amountView.setTextColor(Color.parseColor("#D67B70"));
                 break;
         }
         viewHolder.background.setOnClickListener(this);

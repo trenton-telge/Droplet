@@ -47,7 +47,11 @@ public class Transaction {
         json = json.substring(json.indexOf(",") + 1);
         Log.e("JSON", json);
 
-        this.fromID = Integer.parseInt(json.substring(0, json.indexOf(",")));
+        if (json.substring(0, json.indexOf(",")).contains("null")){
+            this.fromID = 0;
+        } else {
+            this.fromID = Integer.parseInt(json.substring(0, json.indexOf(",")));
+        }
         Log.e("FROMID", json.substring(0, json.indexOf(",")));
         json = json.substring(json.indexOf(",") + 1);
         Log.e("JSON", json);
