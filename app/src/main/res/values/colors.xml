@@ -5,4 +5,7 @@
     <color name="colorAccent">#ffffff</color>
     <color name="colorAccentLight">#D6DFDC</color>
     <color name="greyFontMain">#95989A</color>
+    <color name="pending">#A5BED1</color>
+    <color name="accepted">#75C780</color>
+    <color name="paid">#D67B70</color>
 </resources>

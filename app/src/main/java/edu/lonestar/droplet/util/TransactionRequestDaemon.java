@@ -1,36 +1,46 @@
 package edu.lonestar.droplet.util;
 
-import android.content.Loader;
+import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.ListView;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Vector;
-import android.util.Log;
-
-import edu.lonestar.droplet.LenderControlPanelActivity;
-import edu.lonestar.droplet.LoaderActivity;
-
 
 /**
- * Created by telgetr on 2/24/18.
+ * Created by Alienware on 2/25/2018.
  */
 
-public class DownloadDeamon
-{
-    public static Vector<Disaster> disasterVector = new Vector<>();
-    public void refresh()
-    {
-        new RefreshDataTask().execute(new Object());
+public class TransactionRequestDaemon {
+
+    Context c;
+    String argsAppendix;
+    public static Vector<Transaction> transactionVector = new Vector<>();
+
+    public TransactionRequestDaemon(String argsAppendix, ListView l, Context c){
+        this.argsAppendix = argsAppendix;
+        this.c =c;
+        new RefreshDataTask(l).execute(argsAppendix);
     }
-    static class RefreshDataTask extends AsyncTask<Object, Object, Void> {
+
+
+
+    class RefreshDataTask extends AsyncTask<Object, Object, Void> {
+        boolean resultb = false;
+        private ListView listView;
+        RefreshDataTask(ListView listView){
+            this.listView = listView;
+        }
 
         @Override
-        protected Void doInBackground(Object... objects){
+        protected Void doInBackground(Object... objects) {
             try {
-                // Get http response, include try catch for handle exception
-                URL url = new URL("http://droplet.eventhorizonwebdesign.com/api.php/disasters");
+                URL url = new URL("http://droplet.eventhorizonwebdesign.com/api.php/users/" + argsAppendix);
                 URLConnection urlConnection = url.openConnection();//url from string
                 InputStream is = urlConnection.getInputStream();    //creating inputstream from url connection
                 InputStreamReader isr = new InputStreamReader(is);  // create buffer from inputstream
@@ -45,28 +55,28 @@ public class DownloadDeamon
                 //Vector String to store json lists and
                 result = result.substring(result.indexOf("ds\":"), result.length());
                 String f = "],";
+                Log.e("RESULT OF API CALL", result);
                 String[] strings = result.split(f);
 
                 //  for loop to store in unfiltered vector
-                disasterVector = new Vector<>();
+                transactionVector = new Vector<>();
                 for (String s : strings) {
                     Log.e("DISASTER FOUND", s);
-                    disasterVector.addElement(new Disaster(s));
+                    transactionVector.addElement(new Transaction(s));
                 }
-            }
-
-
-            catch(Exception e)
-            {
-                e.printStackTrace();
+            } catch (Exception e) {
+                resultb = false;
             }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            LenderControlPanelActivity.disasterListView.invalidate();
+            this.listView.setAdapter(new TransactionAdapter(vectorToArrayList(transactionVector), c));
         }
     }
-
+    private static ArrayList<Transaction> vectorToArrayList(Vector<Transaction> vector){
+        if (vector == null){return null;}
+        return new ArrayList<Transaction>(vector);
+    }
 }
