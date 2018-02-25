@@ -32,4 +32,8 @@ public class Transaction {
         daysToRepay = daysToRepayIn;
         interestRate = interestRateIn;
     }
+
+    public Transaction(String json){
+        //TODO
+    }
 }

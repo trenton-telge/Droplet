@@ -17,7 +17,7 @@ import edu.lonestar.droplet.LoaderActivity;
  * Created by telgetr on 2/24/18.
  */
 
-public class DownloadDeamon
+public class DisasterDownloadDeamon
 {
     public static Vector<Disaster> disasterVector = new Vector<>();
     public void refresh()
