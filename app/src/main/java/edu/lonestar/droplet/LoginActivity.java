@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 } catch (Exception e) {
-                    Snackbar(view, "Something went wrong with the HTTP requests.", Length_Short).make();
+                    Snackbar snack = Snackbar.make(view, "Something went wrong with the HTTP requests.", Snackbar.LENGTH_SHORT);
                     e.printStackTrace();
                 }
             }
