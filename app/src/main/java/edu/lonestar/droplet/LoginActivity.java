@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent myIntent = new Intent(c, VictimControlPanelActivity.class);
             c.startActivity(myIntent);
         } else {
-            Intent myIntent = new Intent(c, VictimControlPanelActivity.class);
+            Intent myIntent = new Intent(c, LenderControlPanelActivity.class);
             c.startActivity(myIntent);
         }
     }
