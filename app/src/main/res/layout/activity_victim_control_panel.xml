@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nameplate" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/addRequestButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
