@@ -3,6 +3,8 @@ package edu.lonestar.droplet.util;
 
 import android.util.Log;
 
+import static java.lang.String.valueOf;
+
 /**
  * Created by telgetr on 2/24/18.
  */
@@ -20,17 +22,58 @@ public class Disaster {
         title = title;
     }
 
-    public Disaster(String json){
-        json = json.substring(json.indexOf(":")+2);
+    public Disaster(String json) {
+        json = json.substring(json.indexOf(":") + 2);
         this.id = Integer.parseInt(json.substring(0, json.indexOf(",")));
-        json=json.substring(json.indexOf(":")+3);
-        this.artist = (json.substring(0, json.indexOf("\"")));
-        //height
-        json=json.substring(json.indexOf(":")+2);
-        this.year = Integer.parseInt(json.substring(0, json.indexOf(",")));
-        //Width
-        json=json.substring(json.indexOf(":")+2); // start to count after the colon
-        this.height = Integer.parseInt(json.substring(0, json.indexOf(",")));// start at the prvious value, ini to 0 and count on
-        //artist
+
+        json = json.substring(json.indexOf(":") + 3);
+        this.active = (Boolean.parseBoolean(json.substring(0, json.indexOf("\""))));
+
+        json = json.substring(json.indexOf(":") + 2);
+        this.imageurl = valueOf(json.substring(0, json.indexOf(",")));
+
+        json = json.substring(json.indexOf(":") + 2); // start to count after the colon
+        this.title = valueOf(json.substring(0, json.indexOf(",")));// start at the prvious value, ini to 0 and count on
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public boolean getActive()
+    {
+        return active;
+    }
+
+    public void getActive(boolean active)
+    {
+        this.active = active;
+    }
+
+    public String getImageurl()
+    {
+        return imageurl;
+    }
+
+    public void getImageurl(String imageurl)
+    {
+        this.imageurl = imageurl;
+    }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public void getTitle(String title)
+    {
+        this.title = title;
+    }
 
 }
