@@ -55,7 +55,7 @@ public class TransactionRequestDaemon {
                 Log.e("1", "1");
                 String result = sb.toString();  //set the result string to fully build appendix
                 //Vector String to store json lists and
-                //result = result.substring(result.indexOf("ds\":"), result.length());
+                result = result.substring(result.indexOf("ds\":"), result.length());
                 Log.e("1", "1");
                 String f = "],";
                 Log.e("RESULT OF API CALL", result);
