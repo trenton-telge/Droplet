@@ -52,8 +52,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     public static void logInSuccess(Context c){
-        Intent myIntent = new Intent(c, VictimControlPanelActivity.class);
-        c.startActivity(myIntent);
+        if (MainActivity.loggedUser.isVictim) {
+            Intent myIntent = new Intent(c, VictimControlPanelActivity.class);
+            c.startActivity(myIntent);
+        } else {
+            Intent myIntent = new Intent(c, VictimControlPanelActivity.class);
+            c.startActivity(myIntent);
+        }
     }
     public static void logInFailure(Context c){
         //TODO toast login failure

@@ -27,7 +27,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".LoaderActivity" />
-        <activity android:name=".VictimControlPanelActivity"></activity>
+        <activity android:name=".VictimControlPanelActivity" />
+        <activity
+            android:name=".LenderControlPanelActivity"
+            android:label="@string/title_activity_lender_control_panel"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
