@@ -127,7 +127,7 @@
                     app:layout_constraintStart_toStartOf="@+id/signupPasswordField"
                     app:layout_constraintTop_toBottomOf="@+id/signupLastNameField" />
 
-                <EditText
+                <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/signupPasswordField"
                     android:layout_width="200dp"
                     android:layout_height="30dp"
@@ -216,6 +216,75 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/addressl2Label" />
+
+                <TextView
+                    android:id="@+id/ssnLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_weight="1"
+                    android:text="@string/ssn"
+                    app:layout_constraintStart_toStartOf="@+id/ssnField"
+                    app:layout_constraintTop_toBottomOf="@+id/addressl2Field" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/ssnField"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ssnLabel" />
+
+                <TextView
+                    android:id="@+id/emailLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_weight="1"
+                    android:text="Email"
+                    app:layout_constraintStart_toStartOf="@+id/emailField"
+                    app:layout_constraintTop_toBottomOf="@+id/ssnField" />
+
+                <EditText
+                    android:id="@+id/emailField"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+
+                <Button
+                    android:id="@+id/createAccountFinalizeButton"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@android:color/white"
+                    android:backgroundTint="@android:color/white"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/log_in"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailField" />
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
