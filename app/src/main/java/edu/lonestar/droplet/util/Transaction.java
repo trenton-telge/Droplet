@@ -2,6 +2,8 @@ package edu.lonestar.droplet.util;
 
 import android.util.Log;
 
+import static java.lang.String.valueOf;
+
 /**
  * Created by ckoehler on 2/24/18.
  */
@@ -36,12 +38,43 @@ public class Transaction {
     }
 
     public Transaction(String json){
-        json = json.replaceAll("]", "");
-        json = json.replaceAll("]", "");
-        json = json.substring(json.indexOf(":")+3, json.length());
-        this.transactionID = Integer.parseInt(json.substring(0, json.indexOf(",")));
-        Log.e("ID", json.substring(0, json.indexOf(",")));
-        json = json.substring(json.indexOf("\"")+1, json.length());
+        json = json.substring(json.indexOf("["), json.length());
+        json = json.replace("[[", "[");
+        Log.e("JSON", json);
+        this.transactionID = Integer.parseInt(json.substring(1, json.indexOf(",")));
+        Log.e("TRANSACTIONID", json.substring(1, json.indexOf(",")));
+        json = json.substring(json.indexOf(",") + 1);
+        Log.e("JSON", json);
+
+        this.toID = Integer.parseInt(json.substring(1, json.indexOf(",")));
+        Log.e("TOID", json.substring(1, json.indexOf(",")));
+        json = json.substring(json.indexOf(",") + 1);
+        Log.e("JSON", json);
+
+        this.fromID = Integer.parseInt(json.substring(1, json.indexOf(",")));
+        Log.e("FROMID", json.substring(1, json.indexOf(",")));
+        json = json.substring(json.indexOf(",") + 1);
+        Log.e("JSON", json);
+
+        this.amount = Integer.parseInt(json.substring(1, json.indexOf(",")));
+        Log.e("AMOUNT", json.substring(1, json.indexOf(",")));
+        json = json.substring(json.indexOf(",") + 1);
+        Log.e("JSON", json);
+
+        this.statusID = Integer.parseInt(json.substring(1, json.indexOf(",")));
+        Log.e("STATUSID", json.substring(1, json.indexOf(",")));
+        json = json.substring(json.indexOf(",") + 1);
+        Log.e("JSON", json);
+
+
+        this.daysToRepay = Integer.parseInt(json.substring(1, json.indexOf(",")));
+        Log.e("DAYSTOREPAY", json.substring(1, json.indexOf(",")));
+        json = json.substring(json.indexOf(",") + 1);
+        Log.e("JSON", json);
+
+        this.interestRate = Double.parseDouble(json.substring(1, json.indexOf(",")));
+        Log.e("INTERESTRATE", json.substring(1, json.indexOf(",")));
+        json = json.substring(json.indexOf(",") + 1);
         Log.e("JSON", json);
     }
 }
