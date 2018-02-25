@@ -1,12 +1,22 @@
 package edu.lonestar.droplet.util;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 
 import edu.lonestar.droplet.R;
 
@@ -14,62 +24,77 @@ import edu.lonestar.droplet.R;
  * Created by Alienware on 2/24/2018.
  */
 
-public class DisasterAdapter extends BaseAdapter {
-    private Context context;
-    private final String[] mobileValues;
+public class DisasterAdapter extends ArrayAdapter<Disaster> implements View.OnClickListener{
 
-    public DisasterAdapter(Context context, String[] mobileValues) {
-        this.context = context;
-        this.mobileValues = mobileValues;
+    private ArrayList<Disaster> dataSet;
+    Context mContext;
+
+    // View lookup cache
+    private static class ViewHolder {
+        TextView disasterName;
+        ImageView disasterImage;
     }
 
+    public DisasterAdapter(ArrayList<Disaster> data, Context context) {
+        super(context, R.layout.disaster_grid_item, data);
+        this.dataSet = data;
+        this.mContext=context;
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        int position=(Integer) v.getTag();
+        Object object= getItem(position);
+        Disaster dataModel=(Disaster) object;
+
+        switch (v.getId())
+        {
+            case R.id.disasterImage:
+                //TODO open view of requests by dataModel.id
+                break;
+        }
+    }
+
+    private int lastPosition = -1;
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // Get the data item for this position
+        Disaster dataModel = getItem(position);
+        // Check if an existing view is being reused, otherwise inflate the view
+        ViewHolder viewHolder; // view lookup cache stored in tag
 
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        View gridView;
+        final View result;
 
         if (convertView == null) {
 
-            gridView = new View(context);
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.disaster_grid_item, parent, false);
+            viewHolder.disasterName = (TextView) convertView.findViewById(R.id.disasterName);
+            viewHolder.disasterImage = (ImageView) convertView.findViewById(R.id.disasterImage);
 
-            // get layout from mobile.xml
-            gridView = inflater.inflate(R.layout.disaster_grid_item, null);
+            result=convertView;
 
-            // set value into textview
-            TextView textView = (TextView) gridView.findViewById(R.id.disasterImage);
-            //TODO set text to disaster name
-            // textView.setText(mobileValues[position]);
-
-            // set image based on selected text
-            ImageView imageView = (ImageView) gridView.findViewById(R.id.disasterName);
-
-            String mobile = mobileValues[position];
-
-                //TODO set image to downloaded picture
-            // imageView.setImageResource(R.drawable.windows_logo);
-
+            convertView.setTag(viewHolder);
         } else {
-            gridView = (View) convertView;
+            viewHolder = (ViewHolder) convertView.getTag();
+            result=convertView;
         }
 
-        return gridView;
+        lastPosition = position;
+
+        viewHolder.disasterName.setText(dataModel.title);
+        new AsyncTaskLoadImage(viewHolder.disasterImage).execute(dataModel.imageurl);
+        viewHolder.disasterImage.setOnClickListener(this);
+        viewHolder.disasterImage.setTag(position);
+        // Return the completed view to render on screen
+        return convertView;
     }
 
-    @Override
-    public int getCount() {
-        return mobileValues.length;
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
 
 }
+
+

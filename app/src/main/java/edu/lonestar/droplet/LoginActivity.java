@@ -23,6 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import edu.lonestar.droplet.util.DownloadDeamon;
 import edu.lonestar.droplet.util.LoginDaemon;
 
 public class LoginActivity extends AppCompatActivity {
@@ -56,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent myIntent = new Intent(c, VictimControlPanelActivity.class);
             c.startActivity(myIntent);
         } else {
+            new DownloadDeamon().refresh();
             Intent myIntent = new Intent(c, LenderControlPanelActivity.class);
             c.startActivity(myIntent);
         }

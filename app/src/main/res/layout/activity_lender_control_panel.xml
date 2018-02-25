@@ -7,4 +7,8 @@
     android:background="@android:color/white"
     tools:context="edu.lonestar.droplet.VictimControlPanelActivity">
 
+    <edu.lonestar.droplet.util.HorizontalListView
+        android:id="@+id/disasterScroller"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"></edu.lonestar.droplet.util.HorizontalListView>
 </android.support.constraint.ConstraintLayout>
