@@ -27,4 +27,6 @@
     <string name="address_line_1">Address Line 1</string>
     <string name="address_line_2">Address Line 2</string>
     <string name="ssn">SSN</string>
+    <string name="create_account_simple">Create Account</string>
+    <string name="email">Email</string>
 </resources>

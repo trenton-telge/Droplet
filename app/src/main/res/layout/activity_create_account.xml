@@ -248,7 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:layout_weight="1"
-                    android:text="Email"
+                    android:text="@string/email"
                     app:layout_constraintStart_toStartOf="@+id/emailField"
                     app:layout_constraintTop_toBottomOf="@+id/ssnField" />
 
@@ -279,7 +279,7 @@
                     android:backgroundTint="@android:color/white"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="@string/log_in"
+                    android:text="@string/create_account_simple"
                     android:textColor="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
