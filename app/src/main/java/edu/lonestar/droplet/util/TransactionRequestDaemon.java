@@ -40,20 +40,23 @@ public class TransactionRequestDaemon {
         @Override
         protected Void doInBackground(Object... objects) {
             try {
-                URL url = new URL("http://droplet.eventhorizonwebdesign.com/api.php/users/" + argsAppendix);
+                URL url = new URL("http://droplet.eventhorizonwebdesign.com/api.php/transactions/" + argsAppendix);
+                Log.e("REQ", "http://droplet.eventhorizonwebdesign.com/api.php/transactions/" + argsAppendix);
                 URLConnection urlConnection = url.openConnection();//url from string
                 InputStream is = urlConnection.getInputStream();    //creating inputstream from url connection
                 InputStreamReader isr = new InputStreamReader(is);  // create buffer from inputstream
-
+                Log.e("1", "1");
                 int numCharsRead;   //declare position
                 char[] charArray = new char[1024];  //set buffer size
                 StringBuilder sb = new StringBuilder();//Initialize string builder
                 while ((numCharsRead = isr.read(charArray)) > 0) {  //while the file is not ended
                     sb.append(charArray, 0, numCharsRead);  // append the next 1024 bytes
                 }
+                Log.e("1", "1");
                 String result = sb.toString();  //set the result string to fully build appendix
                 //Vector String to store json lists and
-                result = result.substring(result.indexOf("ds\":"), result.length());
+                //result = result.substring(result.indexOf("ds\":"), result.length());
+                Log.e("1", "1");
                 String f = "],";
                 Log.e("RESULT OF API CALL", result);
                 String[] strings = result.split(f);
@@ -61,7 +64,7 @@ public class TransactionRequestDaemon {
                 //  for loop to store in unfiltered vector
                 transactionVector = new Vector<>();
                 for (String s : strings) {
-                    Log.e("DISASTER FOUND", s);
+                    Log.e("TRANSACTION FOUND", s);
                     transactionVector.addElement(new Transaction(s));
                 }
             } catch (Exception e) {

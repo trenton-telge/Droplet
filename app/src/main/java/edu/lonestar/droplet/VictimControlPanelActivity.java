@@ -15,7 +15,7 @@ public class VictimControlPanelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_victim_control_panel);
         TextView name = findViewById(R.id.nameplate);
         name.setText(String.format("%s %s", MainActivity.loggedUser.firstName, MainActivity.loggedUser.lastName));
-        new TransactionRequestDaemon("?filter[]=id,eq," + MainActivity.loggedUser.ID + "&filter[]=id,eq," + MainActivity.loggedUser.ID + "&satisfy=any", (ListView) findViewById(R.id.victimTransactionList), this.getApplicationContext());
+        new TransactionRequestDaemon("?filter[]=toid,eq," + MainActivity.loggedUser.ID + "&filter[]=fromid,eq," + MainActivity.loggedUser.ID + "&satisfy=any", (ListView) findViewById(R.id.victimTransactionList), this.getApplicationContext());
 
     }
 }

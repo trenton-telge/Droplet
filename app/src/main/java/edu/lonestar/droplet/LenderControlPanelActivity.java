@@ -23,7 +23,7 @@ public class LenderControlPanelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lender_control_panel);
         disasterListView = findViewById(R.id.disasterScroller);
         disasterListView.setAdapter(new DisasterAdapter(vectorToArrayList(DisasterDownloadDeamon.disasterVector), getApplicationContext()));
-        new TransactionRequestDaemon("?filter[]=id,eq," + MainActivity.loggedUser.ID + "&filter[]=id,eq," + MainActivity.loggedUser.ID + "&satisfy=any", (ListView) findViewById(R.id.lenderTransactionList), this.getApplicationContext());
+        new TransactionRequestDaemon("?filter[]=toid,eq," + MainActivity.loggedUser.ID + "&filter[]=fromid,eq," + MainActivity.loggedUser.ID + "&satisfy=any", (ListView) findViewById(R.id.lenderTransactionList), this.getApplicationContext());
     }
 
     public static ArrayList<Disaster> vectorToArrayList(Vector<Disaster> vector){

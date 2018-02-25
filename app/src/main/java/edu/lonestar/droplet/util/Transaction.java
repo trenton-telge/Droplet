@@ -1,5 +1,7 @@
 package edu.lonestar.droplet.util;
 
+import android.util.Log;
+
 /**
  * Created by ckoehler on 2/24/18.
  */
@@ -34,6 +36,12 @@ public class Transaction {
     }
 
     public Transaction(String json){
-        //TODO
+        json = json.replaceAll("]", "");
+        json = json.replaceAll("]", "");
+        json = json.substring(json.indexOf(":")+3, json.length());
+        this.transactionID = Integer.parseInt(json.substring(0, json.indexOf(",")));
+        Log.e("ID", json.substring(0, json.indexOf(",")));
+        json = json.substring(json.indexOf("\"")+1, json.length());
+        Log.e("JSON", json);
     }
 }

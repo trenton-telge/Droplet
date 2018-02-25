@@ -90,7 +90,7 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> implements Vie
         viewHolder.amountView.setText(String.format("$%d", dataModel.amount));
         if (dataModel.toID == MainActivity.loggedUser.ID) {
             new AsyncTaskFindNameByID(viewHolder.partyView).execute(dataModel.fromID);
-        } else {
+        } else if (dataModel.fromID == MainActivity.loggedUser.ID) {
             new AsyncTaskFindNameByID(viewHolder.partyView).execute(dataModel.toID);
         }
         switch (dataModel.statusID){
