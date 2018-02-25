@@ -22,7 +22,7 @@ public class LenderControlPanelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lender_control_panel);
         disasterListView = findViewById(R.id.disasterScroller);
-        disasterListView.setAdapter(new DisasterAdapter(vectorToArrayList(DisasterDownloadDeamon.disasterVector), getApplicationContext()));
+        disasterListView.setAdapter(new DisasterAdapter(vectorToArrayList(DisasterDownloadDeamon.disasterVector), getApplicationContext(), this));
         new TransactionRequestDaemon("?filter[]=toid,eq," + MainActivity.loggedUser.ID + "&filter[]=fromid,eq," + MainActivity.loggedUser.ID + "&satisfy=any", (ListView) findViewById(R.id.lenderTransactionList), this.getApplicationContext());
     }
 

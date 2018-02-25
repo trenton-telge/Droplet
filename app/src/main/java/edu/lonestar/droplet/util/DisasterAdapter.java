@@ -1,5 +1,6 @@
 package edu.lonestar.droplet.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -18,6 +20,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import edu.lonestar.droplet.LenderControlPanelActivity;
+import edu.lonestar.droplet.MainActivity;
 import edu.lonestar.droplet.R;
 
 /**
@@ -28,18 +32,18 @@ public class DisasterAdapter extends ArrayAdapter<Disaster> implements View.OnCl
 
     private ArrayList<Disaster> dataSet;
     Context mContext;
-
+    Activity l;
     // View lookup cache
     private static class ViewHolder {
         TextView disasterName;
         ImageView disasterImage;
     }
 
-    public DisasterAdapter(ArrayList<Disaster> data, Context context) {
+    public DisasterAdapter(ArrayList<Disaster> data, Context context, Activity l) {
         super(context, R.layout.disaster_grid_item, data);
         this.dataSet = data;
         this.mContext=context;
-
+        this.l = l;
     }
 
     @Override
@@ -52,7 +56,7 @@ public class DisasterAdapter extends ArrayAdapter<Disaster> implements View.OnCl
         switch (v.getId())
         {
             case R.id.disasterImage:
-                //TODO open view of requests by dataModel.id
+                new TransactionRequestForDisasterDaemon("?filter=disasterkey,eq," + dataModel.id, (ListView) l.findViewById(R.id.lenderTransactionList), mContext);
                 break;
         }
     }

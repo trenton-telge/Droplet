@@ -31,7 +31,7 @@
         <activity
             android:name=".LenderControlPanelActivity"
             android:label="@string/title_activity_lender_control_panel"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
