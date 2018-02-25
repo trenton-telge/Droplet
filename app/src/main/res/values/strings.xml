@@ -18,4 +18,12 @@
 
     <string name="action_example">Example action</string>
     <string name="title_activity_lender_control">LenderControlActivity</string>
+    <string name="username">Username</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="password">Password</string>
+    <string name="lender">Lender</string>
+    <string name="victim">Victim</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
 </resources>

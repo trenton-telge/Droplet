@@ -55,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Username"
+                    android:text="@string/username"
                     app:layout_constraintStart_toStartOf="@+id/signupUsernameField"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
-                    android:text="First Name"
+                    android:text="@string/first_name"
                     app:layout_constraintStart_toStartOf="@+id/signupNameField"
                     app:layout_constraintTop_toBottomOf="@+id/signupUsernameField" />
 
@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
-                    android:text="Last Name"
+                    android:text="@string/last_name"
                     app:layout_constraintStart_toStartOf="@+id/signupLastNameField"
                     app:layout_constraintTop_toBottomOf="@+id/signupNameField" />
 
@@ -123,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
-                    android:text="Password"
+                    android:text="@string/password"
                     app:layout_constraintStart_toStartOf="@+id/signupPasswordField"
                     app:layout_constraintTop_toBottomOf="@+id/signupLastNameField" />
 
@@ -156,14 +156,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:checked="true"
-                        android:text="Lender" />
+                        android:text="@string/lender" />
 
                     <RadioButton
                         android:id="@+id/userTypeVictim"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Victim" />
+                        android:text="@string/victim" />
 
                 </RadioGroup>
 
@@ -173,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:layout_weight="1"
-                    android:text="Address Line 1"
+                    android:text="@string/address_line_1"
                     app:layout_constraintStart_toStartOf="@+id/addressl1Field"
                     app:layout_constraintTop_toBottomOf="@+id/userType" />
 
@@ -198,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:layout_weight="1"
-                    android:text="Address Line 2"
+                    android:text="@string/address_line_2"
                     app:layout_constraintStart_toStartOf="@+id/addressl2Field"
                     app:layout_constraintTop_toBottomOf="@+id/addressl1Field" />
 
