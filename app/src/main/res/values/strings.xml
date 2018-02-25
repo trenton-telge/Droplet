@@ -30,4 +30,5 @@
     <string name="create_account_simple">Create Account</string>
     <string name="email">Email</string>
     <string name="title_activity_lender_control_panel">LenderControlPanelActivity</string>
+    <string name="name_placeholder">{NAME}</string>
 </resources>
