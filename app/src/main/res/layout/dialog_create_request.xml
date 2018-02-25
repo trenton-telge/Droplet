@@ -72,7 +72,7 @@
         android:background="@color/colorAccentLight"
         android:gravity="center"
         android:padding="10dp"
-        android:text="@string/log_in"
+        android:text="Send"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

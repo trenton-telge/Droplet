@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import edu.lonestar.droplet.FulfillRequestDialog;
 import edu.lonestar.droplet.MainActivity;
 import edu.lonestar.droplet.R;
 
@@ -50,6 +51,7 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> implements Vie
         switch (v.getId())
         {
             case R.id.transactionBackground:
+                new FulfillRequestDialog(new MainActivity(), dataModel).show();
                 //TODO open view of requests by dataModel.id
                 break;
         }
