@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     new LoginDaemon(username, password, LoginActivity.this).refresh();
                 } catch (Exception e) {
-                    Snackbar snack = Snackbar.make(view, "You could not be logged in", Snackbar.LENGTH_SHORT);
+                    Snackbar.make(view, "You could not be logged in", Snackbar.LENGTH_SHORT);
                     e.printStackTrace();
                 }
             }
@@ -54,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
     public static void logInSuccess(Context c){
         Intent myIntent = new Intent(c, VictimControlPanelActivity.class);
         c.startActivity(myIntent);
+    }
+    public static void logInFailure(Context c){
+        //TODO toast login failure
     }
 }
 

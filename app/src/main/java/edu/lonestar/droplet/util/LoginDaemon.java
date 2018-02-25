@@ -3,6 +3,8 @@ package edu.lonestar.droplet.util;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 
 import java.io.InputStream;
@@ -55,7 +57,7 @@ public class LoginDaemon {
                 //Vector String to store json lists and
                 result = result.substring(result.indexOf("],"), result.length());
                 Log.e("RESULT OF API CALL", result);
-                User possible = new User(result);
+                    User possible = new User(result);
                 if (Objects.equals(possible.password, password)){
                     MainActivity.loggedUser = possible;
                     resultb = true;
@@ -64,7 +66,7 @@ public class LoginDaemon {
                     resultb = false;
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                resultb = false;
             }
             return null;
         }
@@ -74,6 +76,8 @@ public class LoginDaemon {
             super.onPostExecute(aVoid);
             if(resultb){
                 LoginActivity.logInSuccess(c);
+            } else {
+                LoginActivity.logInFailure(c);
             }
         }
     }

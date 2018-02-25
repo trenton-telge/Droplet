@@ -48,7 +48,7 @@ public class User {
         disasterID = disasterIDIn;
     }
 
-    public User(String json){
+    public User(String json) throws Exception{
         json = json.replaceAll("]", "");
         json = json.replaceAll("]", "");
         json = json.substring(json.indexOf(":")+3, json.length());
