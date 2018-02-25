@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="edu.lonestar.droplet.CreateAccountActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/backgroundImage"
@@ -12,6 +11,10 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/hurricane_bg" />
 
     <TextView
@@ -28,5 +31,193 @@
         app:layout_constraintEnd_toEndOf="@+id/backgroundImage"
         app:layout_constraintStart_toStartOf="@+id/backgroundImage"
         app:layout_constraintTop_toTopOf="@+id/backgroundImage" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/signupUsernameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Username"
+                    app:layout_constraintStart_toStartOf="@+id/signupUsernameField"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/signupUsernameField"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@android:color/white"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signupUsernameLabel" />
+
+                <TextView
+                    android:id="@+id/signupNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="First Name"
+                    app:layout_constraintStart_toStartOf="@+id/signupNameField"
+                    app:layout_constraintTop_toBottomOf="@+id/signupUsernameField" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/signupNameField"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/white"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signupNameLabel" />
+
+                <TextView
+                    android:id="@+id/signupLastNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Last Name"
+                    app:layout_constraintStart_toStartOf="@+id/signupLastNameField"
+                    app:layout_constraintTop_toBottomOf="@+id/signupNameField" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/signupLastNameField"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/white"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signupLastNameLabel" />
+
+                <TextView
+                    android:id="@+id/signupPasswordLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Password"
+                    app:layout_constraintStart_toStartOf="@+id/signupPasswordField"
+                    app:layout_constraintTop_toBottomOf="@+id/signupLastNameField" />
+
+                <EditText
+                    android:id="@+id/signupPasswordField"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/white"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signupPasswordLabel" />
+
+                <RadioGroup
+                    android:id="@+id/userType"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="@+id/signupPasswordField"
+                    app:layout_constraintTop_toBottomOf="@+id/signupPasswordField">
+
+                    <RadioButton
+                        android:id="@+id/userTypeLender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="Lender" />
+
+                    <RadioButton
+                        android:id="@+id/userTypeVictim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Victim" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/addressl1Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_weight="1"
+                    android:text="Address Line 1"
+                    app:layout_constraintStart_toStartOf="@+id/addressl1Field"
+                    app:layout_constraintTop_toBottomOf="@+id/userType" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/addressl1Field"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressl1Label" />
+
+                <TextView
+                    android:id="@+id/addressl2Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_weight="1"
+                    android:text="Address Line 2"
+                    app:layout_constraintStart_toStartOf="@+id/addressl2Field"
+                    app:layout_constraintTop_toBottomOf="@+id/addressl1Field" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/addressl2Field"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressl2Label" />
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
