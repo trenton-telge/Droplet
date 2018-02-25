@@ -52,6 +52,7 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> implements Vie
         {
             case R.id.transactionBackground:
                 new FulfillRequestDialog(new MainActivity(), dataModel).show();
+                //TODO open view of requests by dataModel.id
                 break;
         }
     }
