@@ -1,5 +1,7 @@
 package edu.lonestar.droplet.util;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -7,6 +9,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Objects;
+
+import edu.lonestar.droplet.LoginActivity;
+import edu.lonestar.droplet.MainActivity;
 
 /**
  * Created by Alienware on 2/24/2018.
@@ -15,17 +21,21 @@ import java.net.URLConnection;
 public class LoginDaemon {
     private static String username;
     private static String password;
-
-    public LoginDaemon(String username, String password){
+    private Context c;
+    public LoginDaemon(String username, String password, Context c){
         LoginDaemon.username = username;
         LoginDaemon.password = password;
+        this.c = c;
     }
 
     public void refresh()
     {
         new LoginDaemon.RefreshDataTask().execute(new Object());
     }
-    static class RefreshDataTask extends AsyncTask<Object, Object, Void> {
+
+
+    class RefreshDataTask extends AsyncTask<Object, Object, Void> {
+        boolean resultb = false;
 
         @Override
         protected Void doInBackground(Object... objects) {
@@ -44,12 +54,27 @@ public class LoginDaemon {
                 String result = sb.toString();  //set the result string to fully build appendix
                 //Vector String to store json lists and
                 result = result.substring(result.indexOf("],"), result.length());
-                Log.e("", result);
-                //TODO set logged in user
+                Log.e("RESULT OF API CALL", result);
+                User possible = new User(result);
+                if (Objects.equals(possible.password, password)){
+                    MainActivity.loggedUser = possible;
+                    resultb = true;
+                } else {
+                    //TODO show error
+                    resultb = false;
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if(resultb){
+                LoginActivity.logInSuccess(c);
+            }
         }
     }
 }

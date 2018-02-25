@@ -1,5 +1,7 @@
 package edu.lonestar.droplet;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -32,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText usernameInput = findViewById(R.id.usernameField);
         final EditText passwordInput = findViewById(R.id.passwordField);
-        Button loginButton = findViewById(R.id.loginButton);
+        final Button loginButton = findViewById(R.id.loginButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,14 +43,17 @@ public class LoginActivity extends AppCompatActivity {
                 String password = passwordInput.getText().toString();
 
                 try {
-                    new LoginDaemon(username, password).refresh();
+                    new LoginDaemon(username, password, LoginActivity.this).refresh();
                 } catch (Exception e) {
                     Snackbar snack = Snackbar.make(view, "You could not be logged in", Snackbar.LENGTH_SHORT);
                     e.printStackTrace();
                 }
             }
         });
-
+    }
+    public static void logInSuccess(Context c){
+        Intent myIntent = new Intent(c, VictimControlPanelActivity.class);
+        c.startActivity(myIntent);
     }
 }
 
