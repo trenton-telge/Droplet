@@ -29,7 +29,8 @@
             android:label="@string/title_activity_victim_control" />
         <activity
             android:name=".LenderControlActivity"
-            android:label="@string/title_activity_lender_control"></activity>
+            android:label="@string/title_activity_lender_control" />
+        <activity android:name=".LoaderActivity"></activity>
     </application>
 
 </manifest>
