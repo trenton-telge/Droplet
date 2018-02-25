@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.lonestar.droplet">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +26,8 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CreateAccountActivity" />
-        <activity android:name=".LoaderActivity"></activity>
+        <activity android:name=".LoaderActivity" />
+        <activity android:name=".VictimControlPanelActivity"></activity>
     </application>
 
 </manifest>

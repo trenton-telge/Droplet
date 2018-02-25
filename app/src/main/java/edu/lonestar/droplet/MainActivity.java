@@ -9,8 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+import edu.lonestar.droplet.util.User;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    public static User loggedUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
