@@ -1,34 +1,36 @@
 package edu.lonestar.droplet.util;
 
-import android.graphics.Color;
 import android.os.AsyncTask;
+import android.util.Log;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Vector;
-import android.util.Log;
-
-
 
 /**
- * Created by telgetr on 2/24/18.
+ * Created by Alienware on 2/24/2018.
  */
 
-public class DownloadDeamon
-{
-    static Vector<Disaster> obunfiltered = new Vector<>();
+public class LoginDaemon {
+    private static String username;
+    private static String password;
+
+    public LoginDaemon(String username, String password){
+        LoginDaemon.username = username;
+        LoginDaemon.password = password;
+    }
+
     public void refresh()
     {
-        new RefreshDataTask().execute(new Object());
+        new LoginDaemon.RefreshDataTask().execute(new Object());
     }
     static class RefreshDataTask extends AsyncTask<Object, Object, Void> {
 
         @Override
-        protected Void doInBackground(Object... objects){
+        protected Void doInBackground(Object... objects) {
             try {
-                // Get http response, include try catch for handle exception
-                URL url = new URL("http://droplet.eventhorizonwebdesign.com/api.php");
+                URL url = new URL("http://droplet.eventhorizonwebdesign.com/api.php/users/?filter=username,eq," + username);
                 URLConnection urlConnection = url.openConnection();//url from string
                 InputStream is = urlConnection.getInputStream();    //creating inputstream from url connection
                 InputStreamReader isr = new InputStreamReader(is);  // create buffer from inputstream
@@ -42,29 +44,12 @@ public class DownloadDeamon
                 String result = sb.toString();  //set the result string to fully build appendix
                 //Vector String to store json lists and
                 result = result.substring(result.indexOf("],"), result.length());
-                String f = "],";
-                String[] strings = result.split(f);
-
-                //  for loop to store in unfiltered vector
-                obunfiltered = new Vector<>();
-                for (String s : strings) {
-                    Log.e("",s);
-                    obunfiltered.addElement(new Disaster(s));
-                }
-            }
-
-
-            catch(Exception e)
-            {
+                Log.e("", result);
+                //TODO set logged in user
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
         }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            //TODO update view
-        }
     }
-
 }

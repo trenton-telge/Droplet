@@ -14,9 +14,14 @@ import android.widget.TextView;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+
+import edu.lonestar.droplet.util.LoginDaemon;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,17 +41,9 @@ public class LoginActivity extends AppCompatActivity {
                 String password = passwordInput.getText().toString();
 
                 try {
-                    URL request = new URL("http://droplet.eventhorizonwebdesign.com/api.php?filter=name,eq," +
-                            username + "&filter=password,eq," + password);
-
-                    HttpURLConnection con = (HttpURLConnection) request.openConnection();
-                    con.setRequestMethod("GET");
-
-                    DataOutputStream output = (DataOutputStream) con.getOutputStream();
-
-
+                    new LoginDaemon(username, password).refresh();
                 } catch (Exception e) {
-                    Snackbar snack = Snackbar.make(view, "Something went wrong with the HTTP requests.", Snackbar.LENGTH_SHORT);
+                    Snackbar snack = Snackbar.make(view, "You could not be logged in", Snackbar.LENGTH_SHORT);
                     e.printStackTrace();
                 }
             }
