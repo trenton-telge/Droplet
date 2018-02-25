@@ -8,11 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import edu.lonestar.droplet.util.DisasterDownloadDeamon;
 import edu.lonestar.droplet.util.LoginDaemon;
 
 public class LoginActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,8 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     new LoginDaemon(username, password, LoginActivity.this).refresh();
                 } catch (Exception e) {
-                    Snackbar.make(view, "You could not be logged in", Snackbar.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT);
+                    toast.show();
                     e.printStackTrace();
                 }
             }
@@ -50,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
     }
     public static void logInFailure(Context c){
         //TODO toast login failure
+        Toast toast = Toast.makeText(c, "Login Failed", Toast.LENGTH_SHORT);
+        toast.show();
     }
 }
 
